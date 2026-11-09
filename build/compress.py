@@ -5,6 +5,8 @@ src, dst = sys.argv[1], sys.argv[2]
 pdf = pikepdf.open(src)
 for page in pdf.pages:
     for name, raw in list(page.images.items()):
+        if "/SMask" in raw or "/Mask" in raw:
+            continue  # keep transparent images (logos) untouched
         try:
             pim = pikepdf.PdfImage(raw); img = pim.as_pil_image()
         except Exception:
@@ -18,6 +20,6 @@ for page in pdf.pages:
             raw.Width, raw.Height = img.size
             raw.ColorSpace = pikepdf.Name("/DeviceRGB") if img.mode == "RGB" else pikepdf.Name("/DeviceGray")
             raw.BitsPerComponent = 8
-            for k in ("/Decode", "/DecodeParms", "/SMask"):
+            for k in ("/Decode", "/DecodeParms"):
                 if k in raw: del raw[k]
 pdf.save(dst, compress_streams=True, object_stream_mode=pikepdf.ObjectStreamMode.generate)

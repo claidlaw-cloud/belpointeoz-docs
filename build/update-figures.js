@@ -19,7 +19,7 @@ fig.navAsOf = nav.asOf;
 fig.navAnnounced = nav.announced || longDate(nav.filingDate);
 fig.navSource = (nav.form && nav.form.indexOf("424B") === 0 ? "prospectus supplement" : "Form " + (nav.form || "8-K")) + " dated " + fig.navAnnounced;
 if (nav.totalNav) fig.totalNav = nav.totalNav;
-if (nav.unitsOutstanding) fig.unitsOutstanding = nav.unitsOutstanding, fig.units = nav.unitsOutstanding;
+if (nav.unitsOutstanding) fig.units = nav.unitsOutstanding;
 
 
 if (facts) {

@@ -21,10 +21,6 @@ fig.navSource = (nav.form && nav.form.indexOf("424B") === 0 ? "prospectus supple
 if (nav.totalNav) fig.totalNav = nav.totalNav;
 if (nav.unitsOutstanding) fig.unitsOutstanding = nav.unitsOutstanding, fig.units = nav.unitsOutstanding;
 
-if (quote && quote.price) {
-  fig.price = Math.round(quote.price * 100) / 100;
-  fig.priceDate = longDate(new Date().toISOString().slice(0, 10));
-}
 
 if (facts) {
   if (facts.report && facts.report.form && facts.report.periodLabel) {
@@ -37,7 +33,14 @@ if (facts) {
   if (facts.viv && facts.viv.pct) { fig.vivPct = facts.viv.pct; fig.vivQualifier = qual(facts.viv.qualifier || "approximately"); if (facts.viv.asOf && (!facts.al || facts.viv.asOf >= (facts.al.asOf || ""))) fig.leasingAsOf = facts.viv.asOf; }
 }
 
-fig.month = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", timeZone: "America/New_York" });
+// The unit price is refreshed only when something else changed (a new NAV, report or leasing figure), so the documents
+// are not regenerated every week for a price move alone. Set FORCE_PRICE=1 to refresh the price regardless.
+const substantive = JSON.stringify(fig) !== before;
+if ((substantive || process.env.FORCE_PRICE) && quote && quote.price) {
+  fig.price = Math.round(quote.price * 100) / 100;
+  fig.priceDate = longDate(new Date().toISOString().slice(0, 10));
+}
+if (substantive || process.env.FORCE_PRICE) fig.month = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", timeZone: "America/New_York" });
 
 fs.writeFileSync(figPath, JSON.stringify(fig, null, 2) + "\n");
 console.log(JSON.stringify(fig) === before ? "unchanged" : "changed");

@@ -16,5 +16,13 @@
   "completedResidences": 693,
   "reportForm": "Form 10-Q",
   "reportPeriod": "the quarter ended September 30, 2026",
-  "reportAccession": "0001493152-26-049977"
+  "reportAccession": "0001493152-26-049977",
+  "debtAsOf": "September 30, 2026",
+  "totalDebt": "$285.3 million",
+  "alDebtDrawn": "$179.5 million",
+  "alDebtFacility": "$204.1 million",
+  "alDebtShort": "$179.5M of $204.1M facility",
+  "vivDebtDrawn": "$97.3 million",
+  "vivDebtFacility": "$104.0 million",
+  "vivDebtShort": "$97.3M of $104.0M facility"
 }

@@ -79,8 +79,8 @@ stat(s, 4.8, 2.2, 3.8, D.nav, "Net asset value per Class A unit as of " + FIG.na
 stat(s, 8.9, 2.2, 3.8, D.discount + " below NAV", "Market price on " + FIG.priceDate + " divided by NAV as of " + FIG.navAsOf + ". NAV is an estimate, not a guarantee of value.");
 stat(s, 0.7, 3.8, 3.8, "693", "Completed residences at Aster & Links (424) and VIV (269)");
 stat(s, 4.8, 3.8, 3.8, D.totalNavWords, "Net asset value as of " + FIG.navAsOf + " (" + FIG.navSource + ")");
-stat(s, 8.9, 3.8, 3.8, D.marketCapWords, "Market capitalization at " + D.price + " per unit (" + FIG.priceDate + ") on " + D.units + " Class A units outstanding at " + FIG.navAsOf);
-src(s, "Sources: " + D.report + "; " + FIG.navSource + " (NAV, total NAV and " + D.units + " Class A units outstanding at " + FIG.navAsOf + ", used for market capitalization at the " + FIG.priceDate + " closing price of " + D.price + "). NAV is calculated quarterly by the Manager under the Company’s valuation policy and is an estimate, not a guarantee of value.");
+stat(s, 8.9, 3.8, 3.8, D.marketCapWords, "Market capitalization at " + D.price + " per unit (" + FIG.priceDate + ") on " + D.units + " Class A units outstanding at " + FIG.unitsAsOf);
+src(s, "Sources: " + D.report + "; " + FIG.navSource + " (NAV and total NAV as of " + FIG.navAsOf + "). Market capitalization uses the " + FIG.priceDate + " closing price of " + D.price + " and " + D.units + " Class A units outstanding at " + FIG.unitsAsOf + " (" + FIG.unitsSource + "). NAV is calculated quarterly by the Manager under the Company’s valuation policy and is an estimate, not a guarantee of value.");
 
 // ================= 4 Why now =================
 s = pres.addSlide({ masterName: "WHITE", sectionTitle: "Overview" });
@@ -113,7 +113,7 @@ s.addChart(pres.ChartType.bar, [{ name: "Whole company", labels: ["Net asset val
   showValue: true, dataLabelPosition: "outEnd", dataLabelFormatCode: "$#,##0", dataLabelFontSize: 11, dataLabelColor: NAVY, dataLabelFontFace: "+mn-lt",
   catAxisLabelColor: N70, catAxisLabelFontSize: 10, catAxisLabelFontFace: "+mn-lt", valAxisHidden: true, valGridLine: { style: "none" }, catGridLine: { style: "none" }, valAxisMinVal: 0, valAxisMaxVal: 580, barGapWidthPct: 55,
 });
-src(s, "Market capitalization: " + D.price + " closing price on " + FIG.priceDate + " multiplied by " + D.units + " Class A units outstanding at " + FIG.navAsOf + " (" + FIG.navSource + "). NAV is calculated quarterly by the Manager under the Company’s valuation policy; it is an estimate, not a guarantee of value, and the market price may never reach it.");
+src(s, "Market capitalization: " + D.price + " closing price on " + FIG.priceDate + " multiplied by " + D.units + " Class A units outstanding at " + FIG.unitsAsOf + " (" + FIG.unitsSource + "). NAV is calculated quarterly by the Manager under the Company’s valuation policy; it is an estimate, not a guarantee of value, and the market price may never reach it.");
 
 // ================= 6 Portfolio ledger =================
 pres.addSection({ title: "Portfolio" });

@@ -20,7 +20,9 @@ fig.navAsOf = nav.asOf;
 fig.navAnnounced = nav.announced || longDate(nav.filingDate);
 fig.navSource = (nav.form && nav.form.indexOf("424B") === 0 ? "prospectus supplement" : "Form " + (nav.form || "8-K")) + " dated " + fig.navAnnounced;
 if (nav.totalNav) fig.totalNav = nav.totalNav;
-if (nav.unitsOutstanding) fig.units = nav.unitsOutstanding;
+// Units outstanding come from the cover page of the latest 10-Q or 10-K (kept in figures.json with their date and source).
+// A NAV announcement replaces them only when its as-of date is later than the unit count already on file.
+if (nav.unitsOutstanding && (!fig.unitsAsOf || new Date(nav.asOf) > new Date(fig.unitsAsOf))) { fig.units = nav.unitsOutstanding; fig.unitsAsOf = nav.asOf; fig.unitsSource = fig.navSource; }
 
 
 if (facts) {

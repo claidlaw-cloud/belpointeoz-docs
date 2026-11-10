@@ -38,16 +38,13 @@ if (facts) {
   if (facts.viv && facts.viv.pct) { fig.vivPct = facts.viv.pct; fig.vivQualifier = qual(facts.viv.qualifier || "approximately"); if (facts.viv.asOf && (!facts.al || facts.viv.asOf >= (facts.al.asOf || ""))) fig.leasingAsOf = facts.viv.asOf; }
 }
 
-// The unit price is the last completed weekly close: the latest daily close dated on or before the most recent Friday
-// (New York time). It therefore changes once a week, and always carries the date of the close it came from.
+// The unit price is the last completed daily close: the latest daily close dated before today (New York time).
+// This is the same rule the relay uses for the figures in the emails, so the emails and the documents show the same
+// price and date. It changes at most once per trading day and always carries the date of the close it came from.
 const closes = Array.isArray(input.closes) ? input.closes.filter((p) => p && /^\d{4}-\d{2}-\d{2}$/.test(p.d) && p.c > 0) : [];
 if (closes.length) {
   const todayNY = new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" });
-  const t = new Date(todayNY + "T12:00:00Z");
-  const back = (t.getUTCDay() + 2) % 7; // days since the most recent Friday (0 on a Friday)
-  t.setUTCDate(t.getUTCDate() - back);
-  const friday = t.toISOString().slice(0, 10);
-  const pick = closes.filter((p) => p.d <= friday).sort((a, b) => (a.d < b.d ? -1 : 1)).pop();
+  const pick = closes.filter((p) => p.d < todayNY).sort((a, b) => (a.d < b.d ? -1 : 1)).pop();
   if (pick) { fig.price = Math.round(pick.c * 100) / 100; fig.priceDate = longDate(pick.d); }
 } else if (process.env.FORCE_PRICE && quote && quote.price) {
   fig.price = Math.round(quote.price * 100) / 100;

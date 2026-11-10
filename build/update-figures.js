@@ -26,6 +26,8 @@ if (nav.unitsOutstanding && (!fig.unitsAsOf || new Date(nav.asOf) > new Date(fig
 
 
 if (facts) {
+  // The relay reports the most recent unit count on file (periodic report cover page or a later NAV announcement).
+  if (facts.units && facts.units.count && facts.units.asOf && (!fig.unitsAsOf || new Date(facts.units.asOf) >= new Date(fig.unitsAsOf))) { fig.units = facts.units.count; fig.unitsAsOf = facts.units.asOf; fig.unitsSource = facts.units.source || fig.unitsSource; }
   if (facts.report && facts.report.form && facts.report.periodLabel) {
     fig.reportForm = "Form " + facts.report.form;
     fig.reportPeriod = facts.report.periodLabel;

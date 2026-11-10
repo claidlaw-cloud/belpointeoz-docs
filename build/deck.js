@@ -76,11 +76,11 @@ s = pres.addSlide({ masterName: "CREAM", sectionTitle: "Overview" });
 label(s, "Belpointe OZ"); title(s, "Built properties, a public company, and a material discount to net asset value");
 stat(s, 0.7, 2.2, 3.8, D.price, "Class A unit price, NYSE American close, " + FIG.priceDate + " (delayed)");
 stat(s, 4.8, 2.2, 3.8, D.nav, "Net asset value per Class A unit as of " + FIG.navAsOf + ", announced " + FIG.navAnnounced);
-stat(s, 8.9, 2.2, 3.8, D.discount + " below NAV", "Market price divided by NAV. NAV is an estimate, not a guarantee of value.");
+stat(s, 8.9, 2.2, 3.8, D.discount + " below NAV", "Market price on " + FIG.priceDate + " divided by NAV as of " + FIG.navAsOf + ". NAV is an estimate, not a guarantee of value.");
 stat(s, 0.7, 3.8, 3.8, "693", "Completed residences at Aster & Links (424) and VIV (269)");
 stat(s, 4.8, 3.8, 3.8, D.totalNavWords, "Net asset value as of " + FIG.navAsOf + " (" + FIG.navSource + ")");
-stat(s, 8.9, 3.8, 3.8, D.marketCapWords, "Market capitalization at " + D.price + " per unit on " + D.units + " Class A units outstanding");
-src(s, "Sources: " + D.report + "; " + FIG.navSource + " (NAV, total NAV and " + D.units + " Class A units outstanding at " + FIG.navAsOf + ", used for market capitalization at " + D.price + "). NAV is calculated quarterly by the Manager under the Company’s valuation policy and is an estimate, not a guarantee of value.");
+stat(s, 8.9, 3.8, 3.8, D.marketCapWords, "Market capitalization at " + D.price + " per unit (" + FIG.priceDate + ") on " + D.units + " Class A units outstanding at " + FIG.navAsOf);
+src(s, "Sources: " + D.report + "; " + FIG.navSource + " (NAV, total NAV and " + D.units + " Class A units outstanding at " + FIG.navAsOf + ", used for market capitalization at the " + FIG.priceDate + " closing price of " + D.price + "). NAV is calculated quarterly by the Manager under the Company’s valuation policy and is an estimate, not a guarantee of value.");
 
 // ================= 4 Why now =================
 s = pres.addSlide({ masterName: "WHITE", sectionTitle: "Overview" });
@@ -108,7 +108,7 @@ s.addChart(pres.ChartType.bar, [{ name: "Per Class A unit", labels: ["NAV per un
   showValue: true, dataLabelPosition: "outEnd", dataLabelFormatCode: "$#,##0.00", dataLabelFontSize: 11, dataLabelColor: NAVY, dataLabelFontFace: "+mn-lt",
   catAxisLabelColor: N70, catAxisLabelFontSize: 10, catAxisLabelFontFace: "+mn-lt", valAxisHidden: true, valGridLine: { style: "none" }, catGridLine: { style: "none" }, valAxisMinVal: 0, valAxisMaxVal: 150, barGapWidthPct: 55,
 });
-s.addChart(pres.ChartType.bar, [{ name: "Whole company", labels: ["Net asset value, " + FIG.navAsOf, "Market capitalization at " + D.price], values: [D.totalNavM, D.marketCapM] }], {
+s.addChart(pres.ChartType.bar, [{ name: "Whole company", labels: ["Net asset value, " + FIG.navAsOf, "Market capitalization, " + FIG.priceDate], values: [D.totalNavM, D.marketCapM] }], {
   x: 6.9, y: 2.0, w: 5.7, h: 4.2, barDir: "bar", chartColors: [FOREST, NAVY], showLegend: false, showTitle: true, title: "Whole company, $ millions", titleFontSize: 11, titleColor: NAVY, titleFontFace: "+mn-lt", titleAlign: "left",
   showValue: true, dataLabelPosition: "outEnd", dataLabelFormatCode: "$#,##0", dataLabelFontSize: 11, dataLabelColor: NAVY, dataLabelFontFace: "+mn-lt",
   catAxisLabelColor: N70, catAxisLabelFontSize: 10, catAxisLabelFontFace: "+mn-lt", valAxisHidden: true, valGridLine: { style: "none" }, catGridLine: { style: "none" }, valAxisMinVal: 0, valAxisMaxVal: 580, barGapWidthPct: 55,
@@ -147,7 +147,7 @@ assets.forEach((a, i) => {
   T(s, a[6], { x: cols[5][1], y, w: cols[5][2], h: rowH, fontSize: 9, color: a[6] === "No debt" ? N50 : N70, valign: "middle" });
   s.addShape(pres.ShapeType.line, { x: 0.7, y: y + rowH, w: 11.9, h: 0, line: { color: LINE, width: 0.5 } });
 });
-src(s, "Source: " + D.report + ", Our Investments and Debt, Net. Purchase prices include transaction costs and exclude construction and other capitalized costs. Leasing percentages are Company estimates as of " + FIG.leasingAsOf + ". Total debt " + FIG.totalDebt + ". Zone designations reflect the Company’s assessment under current law and guidance (OZ 2.0 zones designated under the One Big Beautiful Bill Act of 2025; grandfathered OZ 1.0 sites designated in 2018) and are subject to final Treasury and IRS guidance.");
+src(s, "Source: " + D.report + ", Our Investments and Debt, Net. Purchase prices include transaction costs and exclude construction and other capitalized costs. Leasing percentages are Company estimates as of " + FIG.leasingAsOf + ". Total debt " + FIG.totalDebt + " as of " + FIG.debtAsOf + ". Zone designations reflect the Company’s assessment under current law and guidance (OZ 2.0 zones designated under the One Big Beautiful Bill Act of 2025; grandfathered OZ 1.0 sites designated in 2018) and are subject to final Treasury and IRS guidance.");
 
 // ================= 7 Aster & Links =================
 s = pres.addSlide({ masterName: "WHITE", sectionTitle: "Portfolio" });
@@ -161,7 +161,7 @@ T(s, [
   { text: " ", options: { breakLine: true, fontSize: 6 } },
   { text: "Purchase price: ", options: { bold: true, color: NAVY } }, { text: "$20.7 million for the site, $4.9 million for the adjacent parcel (August 2023) and $4.7 million for 1900 Fruitville Road, used for retail parking.", options: { breakLine: true } },
   { text: " ", options: { breakLine: true, fontSize: 6 } },
-  { text: "Debt: ", options: { bold: true, color: NAVY } }, { text: FIG.alDebtDrawn + " drawn on a " + FIG.alDebtFacility + " mortgage and mezzanine facility with SM Finance III LLC at one-month term SOFR (3.25% floor) plus 2.55% blended, interest-only, maturing October 2027 with two one-year extensions. Interest rate cap at 6.0% through October 15, 2027." },
+  { text: "Debt at " + FIG.debtAsOf + ": ", options: { bold: true, color: NAVY } }, { text: FIG.alDebtDrawn + " drawn on a " + FIG.alDebtFacility + " mortgage and mezzanine facility with SM Finance III LLC at one-month term SOFR (3.25% floor) plus 2.55% blended, interest-only, maturing October 2027 with two one-year extensions. Interest rate cap at 6.0% through October 15, 2027. Leasing percentage is a Company estimate as of " + FIG.leasingAsOf + "." },
 ], { x: 8.4, y: 3.85, w: 4.3, h: 2.5, fontSize: 10, color: N70 });
 
 s = pres.addSlide({ masterName: "WHITE", sectionTitle: "Portfolio" });
@@ -182,7 +182,7 @@ T(s, [
   { text: " ", options: { breakLine: true, fontSize: 6 } },
   { text: "Purchase price: ", options: { bold: true, color: NAVY } }, { text: "$12.1 million for the site and $2.5 million for 900 First Avenue North, a two-tenant retail building whose development rights were transferred to VIV.", options: { breakLine: true } },
   { text: " ", options: { breakLine: true, fontSize: 6 } },
-  { text: "Debt: ", options: { bold: true, color: NAVY } }, { text: FIG.vivDebtDrawn + " drawn on a " + FIG.vivDebtFacility + " construction loan at one-month term SOFR plus 3.80% (7.55% floor), maturing June 28, 2027 with two one-year extensions. Interest rate cap at 6.25% on the full notional through July 1, 2027." },
+  { text: "Debt at " + FIG.debtAsOf + ": ", options: { bold: true, color: NAVY } }, { text: FIG.vivDebtDrawn + " drawn on a " + FIG.vivDebtFacility + " construction loan at one-month term SOFR plus 3.80% (7.55% floor), maturing June 28, 2027 with two one-year extensions. Interest rate cap at 6.25% on the full notional through July 1, 2027. Leasing percentage is a Company estimate as of " + FIG.leasingAsOf + "." },
 ], { x: 8.4, y: 3.85, w: 4.3, h: 2.5, fontSize: 10, color: N70 });
 
 s = pres.addSlide({ masterName: "WHITE", sectionTitle: "Portfolio" });

@@ -13,7 +13,7 @@ const D = {
   totalNavLong: mill(FIG.totalNav, 1), totalNavWords: "$" + Math.round(FIG.totalNav / 1e6) + " million", totalNavShort: millShort(FIG.totalNav),
   marketCapWords: "$" + Math.round(FIG.price * FIG.units / 1e6) + " million", marketCapShort: millShort(FIG.price * FIG.units),
   discount: Math.round((1 - FIG.price / FIG.nav) * 100) + "%", cents: Math.round((FIG.price / FIG.nav) * 100) + " cents",
-  units: Number(FIG.units).toLocaleString("en-US"), priceDateShort: shortDate(FIG.priceDate),
+  units: Number(FIG.units).toLocaleString("en-US"), priceDateShort: shortDate(FIG.priceDate), navAsOfShort: shortDate(FIG.navAsOf),
   al: FIG.alQualifier + " " + FIG.alPct + "% leased", viv: FIG.vivQualifier + " " + FIG.vivPct + "% leased",
 };
 const F = "Inter";
@@ -125,9 +125,9 @@ function whitePaper() {
   push(p("Belpointe PREP, LLC is a Delaware limited liability company, the successor to Belpointe REIT, Inc., which was formed in 2019. It is externally managed by Belpointe PREP Manager, LLC (the “Manager”) and sponsored by Belpointe, LLC (the “Sponsor”), a Greenwich, Connecticut private investment firm whose predecessor was formed in 2001. Belpointe’s affiliates oversee more than $10 billion in assets across asset management, real estate development, construction and property operations. Class A units began trading on the NYSE American on October 18, 2021 under the symbol OZ."));
   push(h2("The contrarian entry point: a material discount to net asset value"));
   push(p([r("On " + FIG.navAnnounced + ", the Company announced that NAV as of " + FIG.navAsOf + " was " + D.nav + " per Class A unit, with total net asset value of approximately " + D.totalNavLong + ". On " + FIG.priceDate + ", Class A units closed at " + D.price + "."), SUP(4)], { keepNext: true }));
-  push(statRow([[D.nav, "NAV per Class A unit, " + FIG.navAsOf], [D.price, "closing price, " + FIG.priceDate], [D.discount, "discount of price to NAV"], [D.marketCapShort + " vs. " + D.totalNavShort, "market capitalization vs. net asset value"]]));
+  push(statRow([[D.nav, "NAV per Class A unit, " + FIG.navAsOf], [D.price, "closing price, " + FIG.priceDate], [D.discount, "discount of " + D.priceDateShort + " closing price to " + D.navAsOfShort + " NAV"], [D.marketCapShort + " vs. " + D.totalNavShort, "market capitalization, " + D.priceDateShort + ", vs. net asset value, " + D.navAsOfShort]]));
   push(p("", { spacing: { after: 120 } }));
-  push(p("A buyer on the exchange is paying about " + D.cents + " for each dollar of the Manager’s estimate of net asset value. Several factors can explain a persistent discount: a small float and limited trading volume; the lag between development spending and stabilized income; and interest expense on floating-rate property debt. None of these change the underlying real estate, but each may keep the price below NAV for an extended period."));
+  push(p("At the " + FIG.priceDate + " closing price, a buyer on the exchange is paying about " + D.cents + " for each dollar of the Manager’s estimate of net asset value. Several factors can explain a persistent discount: a small float and limited trading volume; the lag between development spending and stabilized income; and interest expense on floating-rate property debt. None of these change the underlying real estate, but each may keep the price below NAV for an extended period."));
   push(h2("Completed, income-producing properties"));
   push(p([b("Aster & Links, Sarasota, Florida. "), r("Grandfathered OZ 1.0 site."), SUP1(), r(" Two ten-story buildings on a 5.13-acre site in downtown Sarasota with 424 residences, approximately 51,000 square feet of ground-floor retail anchored by Sprouts Farmers Market, and more than 900 parking spaces. Construction was substantially completed and leasing began in 2024. The property was " + D.al + " as of " + FIG.leasingAsOf + "."), SUP(5)]));
   push(p([b("VIV, St. Petersburg, Florida. "), r("OZ 2.0 zone. Two 11-story residential towers at 1000 1st Avenue North in the EDGE District with 269 residences and approximately 15,500 square feet of ground-floor retail. Leasing began in October 2025, and the property was " + D.viv + " as of " + FIG.leasingAsOf + "."), SUP(5)]));
@@ -184,7 +184,7 @@ function factSheet() {
   push(new Paragraph({ spacing: { after: 180, line: 272 }, children: [r("Belpointe PREP, LLC (“Belpointe OZ”) owns completed, income-producing multifamily and mixed-use properties in Florida Opportunity Zones, a development pipeline in Sarasota and Connecticut, and land held for sale in Nashville. Class A units trade on the NYSE American and have recently traded at a material discount to net asset value.", { size: 18, color: N70 })] }));
 
   // stats, full width
-  const tiles = [[D.price, "Class A unit price, " + D.priceDateShort + " (delayed)"], [D.nav, "NAV per Class A unit, " + FIG.navAsOf + "¹"], [D.marketCapShort + " vs. " + D.totalNavShort, "market cap vs. net asset value"], [String(FIG.completedResidences), "completed residences"]];
+  const tiles = [[D.price, "Class A unit price, " + D.priceDateShort + " (delayed)"], [D.nav, "NAV per Class A unit, " + FIG.navAsOf + "¹"], [D.marketCapShort + " vs. " + D.totalNavShort, "market cap (" + D.priceDateShort + ") vs. NAV (" + D.navAsOfShort + ")"], [String(FIG.completedResidences), "completed residences"]];
   const gap = 140, tw = Math.floor((W - gap * 3) / 4);
   const cells = []; tiles.forEach((t, i) => { cells.push(statTile(t[0], t[1], tw, 22)); if (i < 3) cells.push(new TableCell({ width: { size: gap, type: WidthType.DXA }, borders: noBorders, children: [new Paragraph("")] })); });
   push(new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: cells.map((c, i) => i % 2 === 0 ? tw : gap), borders: noBorders, rows: [new TableRow({ children: cells })] }));
@@ -200,7 +200,7 @@ function factSheet() {
 
   push(two([
     fl("The contrarian entry point"),
-    fp([fr("Class A units have recently traded at a material discount to the Company’s most recently announced net asset value."), r("1", { size: 16, superScript: true }), fr(" At " + D.price + " per unit against NAV of " + D.nav + ", a buyer on the exchange acquires the underlying real estate at roughly " + D.cents + " on the dollar of the Manager’s estimate of value. Company-wide, the market values all Class A units at about " + D.marketCapWords + " against net asset value of " + D.totalNavWords + ".")], 100),
+    fp([fr("Class A units have recently traded at a material discount to the Company’s most recently announced net asset value."), r("1", { size: 16, superScript: true }), fr(" At the " + D.priceDateShort + " close of " + D.price + " against " + D.navAsOfShort + " NAV of " + D.nav + ", a buyer on the exchange acquires the underlying real estate at roughly " + D.cents + " on the dollar of the Manager’s estimate of value. Company-wide, the market values all Class A units at about " + D.marketCapWords + " against net asset value of " + D.totalNavWords + ".")], 100),
     fp("Most Opportunity Zone funds take capital at net asset value for properties not yet built. Here the entry price is set by the market.", 40),
   ], [
     fl("Why Belpointe OZ"),

@@ -1,5 +1,6 @@
 // Merges the relay's facts response into figures.json.
-// Usage: node update-figures.js facts.json   (facts.json = JSON from <relay>?type=facts, which includes facts, nav and quote)
+// Usage: node update-figures.js facts.json   (facts.json = JSON from <relay>?type=facts, which includes facts, nav and quote,
+//        plus "closes": the last ten or more daily closes [{d:"YYYY-MM-DD",c:number}] from <relay>?type=history)
 // Exits 0 and prints "changed" when any figure changed, "unchanged" otherwise. Exits 2 if the input is unusable.
 const fs = require("fs");
 const path = require("path");
@@ -33,14 +34,22 @@ if (facts) {
   if (facts.viv && facts.viv.pct) { fig.vivPct = facts.viv.pct; fig.vivQualifier = qual(facts.viv.qualifier || "approximately"); if (facts.viv.asOf && (!facts.al || facts.viv.asOf >= (facts.al.asOf || ""))) fig.leasingAsOf = facts.viv.asOf; }
 }
 
-// The unit price is refreshed only when something else changed (a new NAV, report or leasing figure), so the documents
-// are not regenerated every week for a price move alone. Set FORCE_PRICE=1 to refresh the price regardless.
-const substantive = JSON.stringify(fig) !== before;
-if ((substantive || process.env.FORCE_PRICE) && quote && quote.price) {
+// The unit price is the last completed weekly close: the latest daily close dated on or before the most recent Friday
+// (New York time). It therefore changes once a week, and always carries the date of the close it came from.
+const closes = Array.isArray(input.closes) ? input.closes.filter((p) => p && /^\d{4}-\d{2}-\d{2}$/.test(p.d) && p.c > 0) : [];
+if (closes.length) {
+  const todayNY = new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" });
+  const t = new Date(todayNY + "T12:00:00Z");
+  const back = (t.getUTCDay() + 2) % 7; // days since the most recent Friday (0 on a Friday)
+  t.setUTCDate(t.getUTCDate() - back);
+  const friday = t.toISOString().slice(0, 10);
+  const pick = closes.filter((p) => p.d <= friday).sort((a, b) => (a.d < b.d ? -1 : 1)).pop();
+  if (pick) { fig.price = Math.round(pick.c * 100) / 100; fig.priceDate = longDate(pick.d); }
+} else if (process.env.FORCE_PRICE && quote && quote.price) {
   fig.price = Math.round(quote.price * 100) / 100;
-  fig.priceDate = longDate(new Date().toISOString().slice(0, 10));
+  fig.priceDate = longDate(new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" }));
 }
-if (substantive || process.env.FORCE_PRICE) fig.month = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", timeZone: "America/New_York" });
+if (JSON.stringify(fig) !== before) fig.month = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", timeZone: "America/New_York" });
 
 fs.writeFileSync(figPath, JSON.stringify(fig, null, 2) + "\n");
 console.log(JSON.stringify(fig) === before ? "unchanged" : "changed");

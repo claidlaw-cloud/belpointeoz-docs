@@ -87,7 +87,7 @@ s = pres.addSlide({ masterName: "WHITE", sectionTitle: "Overview" });
 label(s, "The case"); title(s, "Why Belpointe OZ now");
 const reasons = [
   ["A material discount to NAV", "Class A units have recently traded at a material discount to the Company’s most recently announced net asset value. A buyer on the exchange acquires the underlying real estate below the Company’s own estimate of value."],
-  ["Completed, income-producing properties", "Aster & Links and VIV are built and leasing: " + FIG.alQualifier + " " + FIG.alPct + "% and " + FIG.vivPct + "% leased as of " + FIG.leasingAsOf + ". Most Opportunity Zone funds ask investors to commit capital to properties that do not exist yet, and the Company already owns assets in OZ 2.0 zones, including rural zones."],
+  ["Completed, income-producing properties", "Aster & Links and VIV are built: " + FIG.alQualifier + " " + FIG.alPct + "% and " + FIG.vivPct + "% leased as of " + FIG.leasingAsOf + ". Most Opportunity Zone funds ask investors to commit capital to properties that do not exist yet, and the Company already owns assets in OZ 2.0 zones, including rural zones."],
   ["Construction complete at Aster & Links and VIV", "Construction risk on the two completed properties is behind us. Lease-up risk at each is substantially reduced, though not eliminated, until the property is stabilized. The development pipeline carries its own construction risk."],
   ["The only listed Qualified Opportunity Fund", "Buy through any brokerage account at the market price. No subscription process, no accreditation requirement, no capital calls, and no lock-up when an investor wants to sell. Liquidity depends on trading volume and market conditions."],
 ];

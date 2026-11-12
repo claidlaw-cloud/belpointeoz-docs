@@ -141,7 +141,7 @@ function whitePaper() {
 
   push(h1("6. How to invest"));
   push(numbered([b("Realize a gain. "), r("Sell stock, a business, real estate, cryptocurrency or another appreciated asset. Only the capital gain needs to be reinvested.")], 1));
-  push(numbered([b("Buy Class A units within 180 days. "), r("Place an order for OZ through any brokerage account at the prevailing market price. Qualified Opportunity Fund treatment applies to units purchased on the exchange with eligible gains within the window.")], 1));
+  push(numbered([b("Buy Class A units within 180 days. "), r("Place an order for OZ through any brokerage account at the prevailing market price. Qualified Opportunity Fund treatment applies to units purchased on the exchange with eligible gains within the window."), SUP(6)], 1));
   push(numbered([b("Elect and hold. "), r("Make the deferral election on IRS Form 8949 and report the investment on Form 8997 with your tax return. Belpointe OZ issues a Schedule K-1 to unitholders each year. Hold for at least ten years for the elimination benefit.")], 1));
   push(p("Direct investment by subscription agreement is available only while the Company is offering units. Investors who want to discuss the Company can call Investor Relations at 203-883-1944 or email IR@belpointeoz.com."));
 
@@ -153,9 +153,9 @@ function whitePaper() {
     "Most states conform to the federal statute; a few do not. Confirm the treatment in your state with your own tax professional.",
     "Zone designations reflect the Company’s assessment under current law and guidance and are subject to final Treasury and IRS guidance. Grandfathered OZ 1.0 sites were designated in 2018 and, based on current guidance, remain qualified opportunity zone property under the original program. This assessment is based on current guidance and subject to change.",
     NAVTXT,
-    "Property information is from Belpointe PREP, LLC’s " + FIG.reportForm + " for " + FIG.reportPeriod + ". Leasing percentages are the Company’s estimates as of " + FIG.leasingAsOf + " and change over time.",
+    "Property information is from Belpointe PREP, LLC’s " + FIG.reportForm + " for " + FIG.reportPeriod + ". Leasing percentages are the Company’s estimates as of " + FIG.leasingAsOf + " and change over time.",    "Based on current law, Treasury regulations and IRS guidance, and on Belpointe OZ’s structure as a Qualified Opportunity Fund, Class A units acquired with eligible capital gains within the 180-day period, whether purchased on NYSE American or directly from the Company, should be a qualifying investment. Opportunity Zone tax benefits depend on each investor’s circumstances. Consult your tax adviser.",
   ];
-  const SUPS = ["¹","²","³","⁴","⁵"];
+  const SUPS = ["¹","²","³","⁴","⁵","⁶"];
   NOTES.forEach((t, i) => push(dp(SUPS[i] + " " + t)));
   push(new Paragraph({ keepNext: true, spacing: { before: 160, after: 60 }, children: [r("Not an offer", { size: 22, bold: true })] }));
   push(dp("This white paper is for informational purposes only and does not constitute an offer to sell or the solicitation of an offer to buy any securities of Belpointe PREP, LLC. Class A units trade on the NYSE American under the symbol OZ. Investing in Class A units involves a high degree of risk, including the possible loss of the entire investment. Before investing, read the Company’s filings with the Securities and Exchange Commission, including the risk factors in its Annual Report on Form 10-K and Quarterly Reports on Form 10-Q, available at www.sec.gov."));

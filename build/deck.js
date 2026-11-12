@@ -89,7 +89,7 @@ const reasons = [
   ["A material discount to NAV", "Class A units have recently traded at a material discount to the Company’s most recently announced net asset value. A buyer on the exchange acquires the underlying real estate below the Company’s own estimate of value."],
   ["Completed, income-producing properties", "Aster & Links and VIV are built and leasing: " + FIG.alQualifier + " " + FIG.alPct + "% and " + FIG.vivPct + "% leased as of " + FIG.leasingAsOf + ". Most Opportunity Zone funds ask investors to commit capital to properties that do not exist yet, and the Company already owns assets in OZ 2.0 zones, including rural zones."],
   ["Construction complete at Aster & Links and VIV", "Construction risk on the two completed properties is behind us. Lease-up risk at each is substantially reduced, though not eliminated, until the property is stabilized. The development pipeline carries its own construction risk."],
-  ["The only listed Qualified Opportunity Fund", "Buy through any brokerage account at the market price. No subscription process, no accreditation requirement, no capital calls, and no lock-up when an investor wants to sell."],
+  ["The only listed Qualified Opportunity Fund", "Buy through any brokerage account at the market price. No subscription process, no accreditation requirement, no capital calls, and no lock-up when an investor wants to sell. Liquidity depends on trading volume and market conditions."],
 ];
 reasons.forEach((r, i) => {
   const x = 0.7 + (i % 2) * 6.1, y = 2.0 + Math.floor(i / 2) * 2.15;
@@ -98,7 +98,7 @@ reasons.forEach((r, i) => {
   T(s, r[0], { x: x + 0.25, y: y + 0.35, w: 5.5, h: 0.45, fontSize: 17, bold: true, color: NAVY });
   T(s, r[1], { x: x + 0.25, y: y + 0.85, w: 5.5, h: 1.0, fontSize: 11.5, color: N70 });
 });
-src(s, "NAV is an estimate, not a guarantee of value, and the market price may never reach it. Leasing percentages are Company estimates as of " + FIG.leasingAsOf + ".");
+src(s, "NAV is an estimate, not a guarantee of value, and the market price may never reach it. Leasing percentages are Company estimates as of " + FIG.leasingAsOf + ". Comparisons describe general features of private Opportunity Zone funds and are not a description of any specific fund.");
 
 // ================= 5 Price vs NAV =================
 s = pres.addSlide({ masterName: "WHITE", sectionTitle: "Overview" });

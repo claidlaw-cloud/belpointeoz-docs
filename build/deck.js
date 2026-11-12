@@ -265,7 +265,7 @@ s = pres.addSlide({ masterName: "WHITE", sectionTitle: "Opportunity Zones" });
 label(s, "Opportunity Zone program"); title(s, "Defer, reduce, eliminate");
 const tax = [
   ["Defer", "Reinvest an eligible capital gain in a Qualified Opportunity Fund within 180 days of the sale and defer the capital gain. Under OZ 1.0 the deferred gain is recognized on the earlier of December 31, 2026 or an inclusion event such as a sale of the investment. Under OZ 2.0, for investments made on or after January 1, 2027, the deferral runs five years from the date of investment."],
-  ["Reduce", "The amount of deferred gain recognized is reduced by a basis step-up: 10% after five years under OZ 2.0, with 30% for qualified rural opportunity funds. Under OZ 1.0, the 10% step-up applied to investments that reached their five-year anniversary on or before December 31, 2026."],
+  ["Reduce", "The amount of deferred gain recognized is reduced by a basis step-up: 10% after five years under OZ 2.0, with 30% only for qualified rural opportunity funds. Belpointe OZ is not one, so an investment in Belpointe OZ does not receive the 30% step-up. Under OZ 1.0, the 10% step-up applied to investments that reached their five-year anniversary on or before December 31, 2026."],
   ["Eliminate", "Hold the Qualified Opportunity Fund investment for at least ten years and elect to step the basis up to fair market value on sale, eliminating federal capital gains tax on the appreciation of the investment. OZ 1.0 investments keep this benefit; under OZ 2.0 the election is available for up to 30 years."],
 ];
 tax.forEach((t, i) => {

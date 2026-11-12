@@ -121,12 +121,12 @@ s = pres.addSlide({ masterName: "CREAM", sectionTitle: "Portfolio" });
 label(s, "Portfolio"); title(s, "Every asset: status, purchase price and debt");
 const cols = [["Asset", 0.7, 2.75], ["Location", 3.5, 1.1], ["Status", 4.65, 1.75], ["Zone", 6.45, 1.55], ["Purchase price", 8.05, 2.35], ["Debt at " + FIG.debtAsOf, 10.45, 2.15]];
 const assets = [
-  ["Aster & Links, 1991 Main Street and 1900 Fruitville Road", "Sarasota, FL", "Completed · Leasing (>" + FIG.alPct + "%)", ST.leasing, "Grandfathered OZ 1.0", "$30.3M: $20.7M site, $4.9M adjacent, $4.7M Fruitville", FIG.alDebtShort],
+  ["Aster & Links, 1991 Main Street and 1900 Fruitville Road", "Sarasota, FL", "Completed · Leasing (>" + FIG.alPct + "%)", ST.leasing, "OZ 1.0 zone", "$30.3M: $20.7M site, $4.9M adjacent, $4.7M Fruitville", FIG.alDebtShort],
   ["VIV, 1000 First Avenue North, and 900 First Avenue North", "St. Petersburg, FL", "Completed · Leasing (>" + FIG.vivPct + "%)", ST.leasing, "OZ 2.0 zone", "$14.6M: $12.1M site, $2.5M 900 First", FIG.vivDebtShort],
   ["901-909 Central Avenue North", "St. Petersburg, FL", "Operating · Fully leased", ST.operating, "OZ 2.0 zone", "$2.6M", "No debt"],
-  ["1700 Main Street", "Sarasota, FL", "Predevelopment", ST.pre, "Grandfathered OZ 1.0", "$6.9M", "No debt"],
-  ["1701 and 1710 Ringling Boulevard", "Sarasota, FL", "Development · Office renovation", ST.dev, "Grandfathered OZ 1.0", "$7.0M", "No debt"],
-  ["1702 Ringling Boulevard", "Sarasota, FL", "Held for future development", ST.pre, "Grandfathered OZ 1.0", "$1.5M", "No debt"],
+  ["1700 Main Street", "Sarasota, FL", "Predevelopment", ST.pre, "OZ 1.0 zone", "$6.9M", "No debt"],
+  ["1701 and 1710 Ringling Boulevard", "Sarasota, FL", "Development · Office renovation", ST.dev, "OZ 1.0 zone", "$7.0M", "No debt"],
+  ["1702 Ringling Boulevard", "Sarasota, FL", "Held for future development", ST.pre, "OZ 1.0 zone", "$1.5M", "No debt"],
   ["497-501 Middle Turnpike and Cedar Swamp Road", "Storrs, CT", "Predevelopment", ST.pre, "Rural OZ 2.0 zone", "$5.4M ($3.8M + $1.6M); $0.3M Cedar Swamp", "No debt"],
   ["1750 Storrs Road", "Storrs, CT", "Predevelopment", ST.pre, "Rural OZ 2.0 zone", "$5.5M", "No debt"],
   ["Storrs Road", "Storrs, CT", "Predevelopment", ST.pre, "Rural OZ 2.0 zone", "$0.1M", "No debt"],
@@ -147,14 +147,14 @@ assets.forEach((a, i) => {
   T(s, a[6], { x: cols[5][1], y, w: cols[5][2], h: rowH, fontSize: 9, color: a[6] === "No debt" ? N50 : N70, valign: "middle" });
   s.addShape(pres.ShapeType.line, { x: 0.7, y: y + rowH, w: 11.9, h: 0, line: { color: LINE, width: 0.5 } });
 });
-src(s, "Source: " + D.report + ", Our Investments and Debt, Net. Purchase prices include transaction costs and exclude construction and other capitalized costs. Leasing percentages are Company estimates as of " + FIG.leasingAsOf + ". Total debt " + FIG.totalDebt + " as of " + FIG.debtAsOf + ". Zone designations reflect the Company’s assessment under current law and guidance (OZ 2.0 zones designated under the One Big Beautiful Bill Act of 2025; grandfathered OZ 1.0 sites designated in 2018). Final OZ 2.0 regulations remain pending; see Important information.");
+src(s, "Source: " + D.report + ", Our Investments and Debt, Net. Purchase prices include transaction costs and exclude construction and other capitalized costs. Leasing percentages are Company estimates as of " + FIG.leasingAsOf + ". Total debt " + FIG.totalDebt + " as of " + FIG.debtAsOf + ". Zone designations reflect the Company’s assessment under current law and guidance (OZ 2.0 zones designated under the One Big Beautiful Bill Act of 2025; OZ 1.0 zones designated in 2018). Final OZ 2.0 regulations remain pending; see Important information.");
 
 // ================= 7 Aster & Links =================
 s = pres.addSlide({ masterName: "WHITE", sectionTitle: "Portfolio" });
 label(s, "Completed · Leasing"); title(s, "Aster & Links, Sarasota, Florida");
 photo(s, "aster1.jpg", 0.7, 1.95, 7.3, 4.1);
 cap(s, "Aster & Links, downtown Sarasota.", 0.7, 6.08, 7.3);
-pill(s, 8.4, 1.95, "Leasing · >" + FIG.alPct + "% leased", ST.leasing, 2.1); pill(s, 10.6, 1.95, "Grandfathered OZ 1.0", "3F5567", 2.1);
+pill(s, 8.4, 1.95, "Leasing · >" + FIG.alPct + "% leased", ST.leasing, 2.1); pill(s, 10.6, 1.95, "OZ 1.0 zone", "3F5567", 2.1);
 stat(s, 8.4, 2.5, 2.1, "424", "residences", false, 22); stat(s, 10.6, 2.5, 2.1, "51,000 sf", "retail, Sprouts-anchored", false, 22);
 T(s, [
   { text: "Two ten-story buildings on a 5.13-acre site with one-, two-, three- and four-bedroom apartments, townhome-style penthouses and six guest suites; more than 900 garage and surface parking spaces. Construction was substantially completed and leasing began in 2024.", options: { breakLine: true } },
@@ -168,7 +168,7 @@ s = pres.addSlide({ masterName: "WHITE", sectionTitle: "Portfolio" });
 label(s, "Completed · Leasing"); title(s, "Aster & Links: residences and amenities");
 photo(s, "aster_amenity.jpg", 0.7, 1.95, 3.9, 3.5); photo(s, "aster_amenity2.jpg", 4.7, 1.95, 3.9, 3.5); photo(s, "aster_interior.jpg", 8.7, 1.95, 3.9, 3.5);
 cap(s, "Resident amenity deck.", 0.7, 5.5, 3.9); cap(s, "Resident lounge.", 4.7, 5.5, 3.9); cap(s, "Residence interior.", 8.7, 5.5, 3.9);
-T(s, "Grandfathered OZ 1.0 site in downtown Sarasota. In July 2026, CNN named Sarasota the number one town in America’s Best Towns to Visit, and Niche ranked Sarasota County the number one county for retirees in the nation for 2026. Sarasota is headquarters to Boar’s Head Provisions, CAE Healthcare, Helios Technologies and Voalte, and home to the University of South Florida, Florida State University’s College of Medicine campus, Ringling College and State College of Florida.", { x: 0.7, y: 5.85, w: 11.9, h: 0.7, fontSize: 10, color: N70 });
+T(s, "OZ 1.0 zone in downtown Sarasota. In July 2026, CNN named Sarasota the number one town in America’s Best Towns to Visit, and Niche ranked Sarasota County the number one county for retirees in the nation for 2026. Sarasota is headquarters to Boar’s Head Provisions, CAE Healthcare, Helios Technologies and Voalte, and home to the University of South Florida, Florida State University’s College of Medicine campus, Ringling College and State College of Florida.", { x: 0.7, y: 5.85, w: 11.9, h: 0.7, fontSize: 10, color: N70 });
 
 // ================= 8 VIV =================
 s = pres.addSlide({ masterName: "WHITE", sectionTitle: "Portfolio" });
@@ -193,11 +193,11 @@ T(s, "Amenities include a clubroom, fitness center, courtyard pool, shared worki
 
 // ================= 9 Sarasota pipeline =================
 s = pres.addSlide({ masterName: "CREAM", sectionTitle: "Portfolio" });
-label(s, "Development pipeline · Grandfathered OZ 1.0 sites"); title(s, "Downtown Sarasota: the next phase");
+label(s, "Development pipeline · OZ 1.0 zone"); title(s, "Downtown Sarasota: the next phase");
 const cards9 = [
-  ["1700 Main Street", "Predevelopment", ST.pre, "Grandfathered OZ 1.0 site. 1.3-acre site planned as a 12-story community of about 130 apartment homes with roughly 6,000 square feet of retail and a 300-space garage. Purchase price $6.9 million. No debt."],
-  ["1701 and 1710 Ringling Boulevard", "Development · Office renovation", ST.dev, "Grandfathered OZ 1.0 site. 1.6-acre site with a six-story office building to be renovated into about 80,000 square feet of modern office space, plus a 128-space lot. A 20-year lease covering about 42,000 square feet was signed with the existing tenant at acquisition. Purchase price $7.0 million. No debt."],
-  ["1702 Ringling Boulevard", "Held for future development", ST.pre, "Grandfathered OZ 1.0 site. Fully leased 1,546 square foot single-tenant office building on 0.327 acres, held for future multifamily development. Purchase price $1.5 million. No debt."],
+  ["1700 Main Street", "Predevelopment", ST.pre, "OZ 1.0 zone. 1.3-acre site planned as a 12-story community of about 130 apartment homes with roughly 6,000 square feet of retail and a 300-space garage. Purchase price $6.9 million. No debt."],
+  ["1701 and 1710 Ringling Boulevard", "Development · Office renovation", ST.dev, "OZ 1.0 zone. 1.6-acre site with a six-story office building to be renovated into about 80,000 square feet of modern office space, plus a 128-space lot. A 20-year lease covering about 42,000 square feet was signed with the existing tenant at acquisition. Purchase price $7.0 million. No debt."],
+  ["1702 Ringling Boulevard", "Held for future development", ST.pre, "OZ 1.0 zone. Fully leased 1,546 square foot single-tenant office building on 0.327 acres, held for future multifamily development. Purchase price $1.5 million. No debt."],
 ];
 cards9.forEach((c, i) => {
   const x = 0.7 + i * 4.05;
@@ -206,7 +206,7 @@ cards9.forEach((c, i) => {
   T(s, c[0], { x: x + 0.3, y: 2.8, w: 3.25, h: 0.7, fontSize: 15, bold: true, color: NAVY });
   T(s, c[3], { x: x + 0.3, y: 3.5, w: 3.25, h: 2.4, fontSize: 10, color: N70 });
 });
-src(s, "Source: " + D.report + ". Development plans are subject to change, financing, entitlements and market conditions. Zone designations reflect the Company’s assessment under current law and guidance (OZ 2.0 zones designated under the One Big Beautiful Bill Act of 2025; grandfathered OZ 1.0 sites designated in 2018). Final OZ 2.0 regulations remain pending; see Important information.");
+src(s, "Source: " + D.report + ". Development plans are subject to change, financing, entitlements and market conditions. Zone designations reflect the Company’s assessment under current law and guidance (OZ 2.0 zones designated under the One Big Beautiful Bill Act of 2025; OZ 1.0 zones designated in 2018). Final OZ 2.0 regulations remain pending; see Important information.");
 
 // ================= 10 Storrs =================
 s = pres.addSlide({ masterName: "WHITE", sectionTitle: "Portfolio" });
@@ -223,7 +223,7 @@ cards10.forEach((c, i) => {
   T(s, c[0], { x: x + 0.3, y: 2.8, w: 3.25, h: 0.7, fontSize: 15, bold: true, color: NAVY });
   T(s, c[3], { x: x + 0.3, y: 3.5, w: 3.25, h: 2.5, fontSize: 10, color: N70 });
 });
-src(s, "Source: " + D.report + ". UConn ranked 32nd among Top Public Schools in the 2027 U.S. News rankings; over 21,000 undergraduates attended the Storrs campus in Fall 2025. Zone designations reflect the Company’s assessment under current law and guidance (OZ 2.0 zones designated under the One Big Beautiful Bill Act of 2025; grandfathered OZ 1.0 sites designated in 2018). Final OZ 2.0 regulations remain pending; see Important information.");
+src(s, "Source: " + D.report + ". UConn ranked 32nd among Top Public Schools in the 2027 U.S. News rankings; over 21,000 undergraduates attended the Storrs campus in Fall 2025. Zone designations reflect the Company’s assessment under current law and guidance (OZ 2.0 zones designated under the One Big Beautiful Bill Act of 2025; OZ 1.0 zones designated in 2018). Final OZ 2.0 regulations remain pending; see Important information.");
 
 // ================= 11 Nashville =================
 s = pres.addSlide({ masterName: "CREAM", sectionTitle: "Portfolio" });
@@ -239,7 +239,7 @@ cards11.forEach((c, i) => {
   T(s, c[0], { x: x + 0.3, y: 2.8, w: 5.2, h: 0.5, fontSize: 16, bold: true, color: NAVY });
   T(s, c[3], { x: x + 0.3, y: 3.4, w: 5.2, h: 2.6, fontSize: 11, color: N70 });
 });
-src(s, "Source: " + D.report + ". The 900 8th Avenue South sale is subject to the buyer’s inspection and closing conditions and may not close. There is no assurance the Davidson properties will sell at any particular price. Zone designations reflect the Company’s assessment under current law and guidance (OZ 2.0 zones designated under the One Big Beautiful Bill Act of 2025; grandfathered OZ 1.0 sites designated in 2018). Final OZ 2.0 regulations remain pending; see Important information.");
+src(s, "Source: " + D.report + ". The 900 8th Avenue South sale is subject to the buyer’s inspection and closing conditions and may not close. There is no assurance the Davidson properties will sell at any particular price. Zone designations reflect the Company’s assessment under current law and guidance (OZ 2.0 zones designated under the One Big Beautiful Bill Act of 2025; OZ 1.0 zones designated in 2018). Final OZ 2.0 regulations remain pending; see Important information.");
 
 // ================= Plan =================
 s = pres.addSlide({ masterName: "CREAM", sectionTitle: "Portfolio" });
@@ -289,7 +289,7 @@ steps.forEach((st, i) => {
   T(s, st[1], { x: x + 0.25, y: 2.4, w: 3.5, h: 0.5, fontSize: 17, bold: true, color: WHITE });
   T(s, st[2], { x: x + 0.25, y: 2.95, w: 3.5, h: 1.3, fontSize: 11, color: "C9D1D8" });
 });
-T(s, "From time to time, in its sole discretion, the Company may offer Class A units directly under an effective registration statement. Availability and terms are subject to change.", { x: 0.7, y: 4.4, w: 11.9, h: 0.4, fontSize: 10, color: "8C98A4" });
+T(s, "From time to time, in its sole discretion, the Company may offer Class A units directly under an effective registration statement. No such offering is currently open. Availability and terms are subject to change.", { x: 0.7, y: 4.4, w: 11.9, h: 0.4, fontSize: 10, color: "8C98A4" });
 T(s, "Investor Relations", { x: 0.7, y: 5.0, w: 6, h: 0.4, fontSize: 15, bold: true, color: WHITE });
 T(s, [{ text: "203-883-1944  ·  IR@belpointeoz.com", options: { breakLine: true } }, { text: "255 Glenville Road, Greenwich, CT 06831", options: { breakLine: true } }, { text: "belpointeoz.com  ·  SEC filings at www.sec.gov" }], { x: 0.7, y: 5.45, w: 7, h: 1.0, fontSize: 12, color: "C9D1D8" });
 T(s, "NYSE American: OZ", { x: 8.3, y: 5.0, w: 4.3, h: 0.5, fontSize: 22, bold: true, color: LGREEN, align: "right" });

@@ -26,7 +26,7 @@ const r = (t, o = {}) => new TextRun({ text: t, font: F, size: 21, color: NAVY, 
 const b = (t, o = {}) => r(t, { bold: true, ...o });
 const SUP = (n) => r(String(n), { size: 16, superScript: true });
 const SUP1 = () => SUP(3);
-const GF_NOTE = "¹ Based on current guidance and subject to change. Grandfathered OZ 1.0 sites were designated in 2018 and, based on current guidance, remain qualified opportunity zone property under the original program.";
+const GF_NOTE = "¹ Based on current guidance and subject to change. OZ 1.0 zones were designated in 2018 and, based on current guidance, remain qualified opportunity zone property under the original program.";
 const p = (x, o = {}) => new Paragraph({ spacing: { after: 160, line: 300 }, ...o, children: Array.isArray(x) ? x : [r(x)] });
 const dp = (t) => new Paragraph({ spacing: { after: 120, line: 280 }, children: [r(t, { size: 19, color: N70 })] });
 const small = (t, o = {}) => new Paragraph({ spacing: { after: 100, line: 260 }, ...o, children: [r(t, { size: 17, color: N50 })] });
@@ -99,7 +99,7 @@ function whitePaper() {
     ["Zone map", "Roughly 8,700 tracts designated in 2018; the current map stays in force for OZ 1.0 investments", "Governors nominate new tracts from July 1, 2026 with tighter income tests; the new map takes effect January 1, 2027 and is redrawn every ten years"],
     ["Rural incentive", "None", "Qualified rural opportunity funds get the 30% step-up and a lower 50% substantial-improvement threshold"],
     ["Reporting", "Form 8996 for the fund; Form 8997 for the investor", "Expanded fund and investor reporting, with penalties for funds that fail to report"],
-    ["Belpointe OZ", "Aster & Links, 1700 Main Street and 1701-1710 Ringling Boulevard are grandfathered OZ 1.0 sites³", "VIV, 901-909 Central Avenue and the Nashville assets sit in OZ 2.0 zones; the Storrs parcels sit in a qualified rural opportunity zone"]], [2100, 3630, 3630], { size: 18 }));
+    ["Belpointe OZ", "Aster & Links, 1700 Main Street and 1701-1710 Ringling Boulevard are in OZ 1.0 zones³", "VIV, 901-909 Central Avenue and the Nashville assets sit in OZ 2.0 zones; the Storrs parcels sit in a qualified rural opportunity zone"]], [2100, 3630, 3630], { size: 18 }));
   push(h2("What OZ 2.0 means for an investor in 2027 and after"));
   push(p("An investor with a gain in 2027 reinvests within 180 days, defers the gain for five years, recognizes 90% of it (70% for a rural fund) in year five, and pays no federal capital gains tax on the appreciation of the fund investment itself if the investment is held at least ten years. Because the deferral is rolling, there is no longer a single cliff date for everyone; each investment runs on its own clock. Because the program is permanent, a fund that already holds property in a designated OZ 2.0 zone can accept new capital for years rather than racing a sunset."));
   push(p("The practical question for a 2027 investor is the same one that applied under OZ 1.0: does the fund own real property in a qualifying zone, and is that property built or still a plan? Belpointe OZ already owns operating and development property in OZ 2.0 zones, including a rural zone, and its original Sarasota sites remain qualified under OZ 1.0."));
@@ -129,13 +129,13 @@ function whitePaper() {
   push(p("", { spacing: { after: 120 } }));
   push(p("At the " + FIG.priceDate + " closing price, a buyer on the exchange is paying about " + D.cents + " for each dollar of the Manager’s estimate of net asset value. Several factors can explain a persistent discount: a small float and limited trading volume; the lag between development spending and stabilized income; and interest expense on floating-rate property debt. None of these change the underlying real estate, but each may keep the price below NAV for an extended period."));
   push(h2("Completed, income-producing properties"));
-  push(p([b("Aster & Links, Sarasota, Florida. "), r("Grandfathered OZ 1.0 site."), SUP1(), r(" Two ten-story buildings on a 5.13-acre site in downtown Sarasota with 424 residences, including six guest suites, approximately 51,000 square feet of ground-floor retail anchored by Sprouts Farmers Market, and more than 900 parking spaces. Construction was substantially completed and leasing began in 2024. The property was " + D.al + " as of " + FIG.leasingAsOf + "."), SUP(7)]));
+  push(p([b("Aster & Links, Sarasota, Florida. "), r("OZ 1.0 zone."), SUP1(), r(" Two ten-story buildings on a 5.13-acre site in downtown Sarasota with 424 residences, including six guest suites, approximately 51,000 square feet of ground-floor retail anchored by Sprouts Farmers Market, and more than 900 parking spaces. Construction was substantially completed and leasing began in 2024. The property was " + D.al + " as of " + FIG.leasingAsOf + "."), SUP(7)]));
   push(p([b("VIV, St. Petersburg, Florida. "), r("OZ 2.0 zone. Two 11-story residential towers at 1000 1st Avenue North in the EDGE District with 269 residences and approximately 15,500 square feet of ground-floor retail. Leasing began in October 2025, and the property was " + D.viv + " as of " + FIG.leasingAsOf + "."), SUP(7)]));
   push(p([b("901-909 Central Avenue North, St. Petersburg. "), r("OZ 2.0 zone. A fully leased 5,328 square foot retail and office building.")]));
   push(h2("Construction complete at Aster & Links and VIV"));
   push(p("Construction risk on the two completed properties is behind the Company. Lease-up risk at each is substantially reduced, though not eliminated, until the property is stabilized. The development pipeline in Sarasota and Storrs carries its own construction risk. A new OZ 2.0 fund must buy land and build; here the two principal properties already exist and the investor can see what they are buying."));
   push(h2("A pipeline and land positioned for sale"));
-  push(bullet([b("Downtown Sarasota (grandfathered OZ 1.0 sites"), SUP1(), b("). "), r("1700 Main Street, planned as an approximately 130-residence community with ground-floor retail, and 1701-1710 Ringling Boulevard, an office renovation with a 20-year lease for approximately 42,000 square feet.")]));
+  push(bullet([b("Downtown Sarasota (OZ 1.0 zones"), SUP1(), b("). "), r("1700 Main Street, planned as an approximately 130-residence community with ground-floor retail, and 1701-1710 Ringling Boulevard, an office renovation with a 20-year lease for approximately 42,000 square feet.")]));
   push(bullet([b("Storrs and Mansfield, Connecticut (qualified rural opportunity zone under OZ 2.0). "), r("497-501 Middle Turnpike, near the University of Connecticut, planned as an approximately 261-residence community, plus Storrs Road and 1750 Storrs Road held for future multifamily development.")]));
   push(bullet([b("Nashville, Tennessee, held for sale (OZ 2.0 zones). "), r("900 8th Avenue South, under contract for $19.6 million, and the Davidson Street properties, approximately 15.6 acres on the East Bank rezoned for high-density multifamily and commercial use.")]));
 
@@ -143,7 +143,7 @@ function whitePaper() {
   push(numbered([b("Realize a gain. "), r("Sell stock, a business, real estate, cryptocurrency or another appreciated asset. Only the capital gain needs to be reinvested.")], 1));
   push(numbered([b("Buy Class A units within 180 days. "), r("Place an order for OZ through any brokerage account at the prevailing market price. Qualified Opportunity Fund treatment applies to units purchased on the exchange with eligible gains within the window."), SUP(8)], 1));
   push(numbered([b("Elect and hold. "), r("Make the deferral election on IRS Form 8949 and report the investment on Form 8997 with your tax return. Belpointe OZ issues a Schedule K-1 to unitholders each year. Hold for at least ten years for the elimination benefit.")], 1));
-  push(p("From time to time, in its sole discretion, the Company may offer Class A units directly under an effective registration statement. Availability and terms are subject to change. Investors who want to discuss the Company can call Investor Relations at 203-883-1944 or email IR@belpointeoz.com."));
+  push(p("From time to time, in its sole discretion, the Company may offer Class A units directly under an effective registration statement. No such offering is currently open. Availability and terms are subject to change. Investors who want to discuss the Company can call Investor Relations at 203-883-1944 or email IR@belpointeoz.com."));
 
   push(new Paragraph({ children: [new PageBreak()] }));
   push(h1("Important information"));
@@ -214,11 +214,11 @@ function factSheet() {
   push(fl("Portfolio"));
   const three = (a, bb, c) => { const w = 3080, g = 240; return new Table({ width: { size: W, type: WidthType.DXA }, columnWidths: [w, g, w, g, w], borders: noBorders, rows: [new TableRow({ children: [col(a, w), col([new Paragraph("")], g), col(bb, w), col([new Paragraph("")], g), col(c, w)] })] }); };
   push(three([
-    fbul([fb("Aster & Links, Sarasota, FL. "), fr("Grandfathered OZ 1.0 site. 424 residences,"), r("2", { size: 16, superScript: true }), fr(" ~51,000 sf retail anchored by Sprouts, 900+ parking spaces. Completed.")]),
+    fbul([fb("Aster & Links, Sarasota, FL. "), fr("OZ 1.0 zone. 424 residences,"), r("2", { size: 16, superScript: true }), fr(" ~51,000 sf retail anchored by Sprouts, 900+ parking spaces. Completed.")]),
     fbul([fb("VIV, St. Petersburg, FL. "), fr("OZ 2.0 zone. 269 residences in two 11-story towers, ~15,500 sf retail, EDGE District. Completed.")]),
   ], [
     fbul([fb("901-909 Central Avenue North, St. Petersburg. "), fr("OZ 2.0 zone. Fully leased retail/office building.")]),
-    fbul([fb("Sarasota pipeline. "), fr("Grandfathered OZ 1.0 sites. 1700 Main Street (~130 residences, predevelopment) and 1701-1710 Ringling Boulevard (office renovation, 20-year lease signed).")]),
+    fbul([fb("Sarasota pipeline. "), fr("OZ 1.0 zone. 1700 Main Street (~130 residences, predevelopment) and 1701-1710 Ringling Boulevard (office renovation, 20-year lease signed).")]),
   ], [
     fbul([fb("Storrs, CT pipeline. "), fr("Rural OZ 2.0 zone. 497-501 Middle Turnpike (~261 residences, predevelopment), 1750 Storrs Road and Storrs Road, near UConn.")]),
     fbul([fb("Nashville, held for sale. "), fr("OZ 2.0 zones. 900 8th Avenue South under contract to be sold; Davidson Street, ~15.6 acres rezoned for high-density use.")]),
@@ -236,11 +236,11 @@ function factSheet() {
   push(new Paragraph({ spacing: { before: 40 }, children: [r("¹ ² ³ ⁴ See Important information on page 2. This fact sheet is not an offer to sell or a solicitation of an offer to buy any securities. Investing in Class A units involves a high degree of risk, including loss of the entire investment.", { size: 13, color: N50 })] }));
 
   // ---- Page 2: Important information ----
-  const dh = (t) => new Paragraph({ keepNext: true, spacing: { before: 150, after: 60 }, children: [r(t, { size: 20, bold: true })] });
+  const dh = (t) => new Paragraph({ keepNext: true, spacing: { before: 120, after: 50 }, children: [r(t, { size: 20, bold: true })] });
   const dq = (t) => new Paragraph({ spacing: { after: 50, line: 250 }, children: [r(t, { size: 14, color: N70 })] });
   push(new Paragraph({ pageBreakBefore: true, spacing: { before: 0, after: 100 }, children: [r("Important information", { size: 30, bold: true })] }));
   push(dh("Not an offer"));
-  push(dq("This fact sheet is for informational purposes only and does not constitute an offer to sell or the solicitation of an offer to buy any securities of Belpointe PREP, LLC. Class A units trade on the NYSE American under the symbol OZ. Investing in Class A units involves a high degree of risk, including the possible loss of the entire investment. Before investing, read the Company’s filings with the Securities and Exchange Commission, including the risk factors in its Annual Report on Form 10-K and Quarterly Reports on Form 10-Q, available at www.sec.gov. From time to time, in its sole discretion, the Company may offer Class A units directly under an effective registration statement. Availability and terms are subject to change."));
+  push(dq("This fact sheet is for informational purposes only and does not constitute an offer to sell or the solicitation of an offer to buy any securities of Belpointe PREP, LLC. Class A units trade on the NYSE American under the symbol OZ. Investing in Class A units involves a high degree of risk, including the possible loss of the entire investment. Before investing, read the Company’s filings with the Securities and Exchange Commission, including the risk factors in its Annual Report on Form 10-K and Quarterly Reports on Form 10-Q, available at www.sec.gov. From time to time, in its sole discretion, the Company may offer Class A units directly under an effective registration statement. No such offering is currently open. Availability and terms are subject to change."));
   push(dh("Forward-looking statements"));
   push(dq("This fact sheet contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933 and Section 21E of the Securities Exchange Act of 1934, including statements about leasing, stabilization, development plans, dispositions, net asset value and the Opportunity Zone program. Words such as “anticipate,” “estimate,” “expect,” “project,” “plan,” “intend,” “believe,” “may” and “will” identify forward-looking statements. They reflect current expectations and are subject to the risks and uncertainties described in the Company’s SEC filings, including delays in the lease-up and stabilization of its properties, fluctuations in occupancy and market rents, the availability and cost of financing, and changes in tax law. Actual results may differ materially, and the Company undertakes no obligation to update any forward-looking statement except as required by law."));
   push(dh("Properties and Opportunity Zone designations"));

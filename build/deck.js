@@ -281,7 +281,7 @@ src(s, "Nothing here is tax advice. Benefits depend on each investor’s circums
 pres.addSection({ title: "Investing" });
 s = pres.addSlide({ masterName: "NAVY", sectionTitle: "Investing" });
 label(s, "Two ways in"); title(s, "How to invest");
-const steps = [["01", "Realize a gain", "Sell stock, a business, real estate, crypto or another appreciated asset. Only the gain needs to be reinvested."], ["02", "Buy OZ within 180 days", [{ text: "Purchase Class A units through any brokerage account at the prevailing market price." }, { text: "1", options: { superscript: true } }, { text: " No minimum, no accreditation, no subscription documents." }]], ["03", "Elect and hold", "Make the deferral election on IRS Form 8949 and report the investment on Form 8997 with your tax return, then hold for the ten-year benefit."]];
+const steps = [["01", "Realize a gain", "Sell stock, a business, real estate, crypto or another appreciated asset. Only the capital gain you invest is eligible for the tax benefits."], ["02", "Buy OZ within 180 days", [{ text: "Purchase Class A units through any brokerage account at the prevailing market price." }, { text: "1", options: { superscript: true } }, { text: " No minimum, no accreditation, no subscription documents." }]], ["03", "Elect and hold", "Make the deferral election on IRS Form 8949 and report the investment on Form 8997 with your tax return, then hold for the ten-year benefit."]];
 steps.forEach((st, i) => {
   const x = 0.7 + i * 4.05;
   s.addShape(pres.ShapeType.rect, { x, y: 2.0, w: 0.04, h: 2.2, fill: { color: LGREEN }, line: { color: LGREEN } });

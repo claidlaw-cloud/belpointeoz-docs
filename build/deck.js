@@ -289,7 +289,7 @@ steps.forEach((st, i) => {
   T(s, st[1], { x: x + 0.25, y: 2.4, w: 3.5, h: 0.5, fontSize: 17, bold: true, color: WHITE });
   T(s, st[2], { x: x + 0.25, y: 2.95, w: 3.5, h: 1.3, fontSize: 11, color: "C9D1D8" });
 });
-T(s, "Direct investment by subscription agreement is available only while the Company is offering units. Speak with Investor Relations to confirm availability.", { x: 0.7, y: 4.4, w: 11.9, h: 0.4, fontSize: 10, color: "8C98A4" });
+T(s, "From time to time, in its sole discretion, the Company may offer Class A units directly under an effective registration statement. Availability and terms are subject to change.", { x: 0.7, y: 4.4, w: 11.9, h: 0.4, fontSize: 10, color: "8C98A4" });
 T(s, "Investor Relations", { x: 0.7, y: 5.0, w: 6, h: 0.4, fontSize: 15, bold: true, color: WHITE });
 T(s, [{ text: "203-883-1944  ·  IR@belpointeoz.com", options: { breakLine: true } }, { text: "255 Glenville Road, Greenwich, CT 06831", options: { breakLine: true } }, { text: "belpointeoz.com  ·  SEC filings at www.sec.gov" }], { x: 0.7, y: 5.45, w: 7, h: 1.0, fontSize: 12, color: "C9D1D8" });
 T(s, "NYSE American: OZ", { x: 8.3, y: 5.0, w: 4.3, h: 0.5, fontSize: 22, bold: true, color: LGREEN, align: "right" });

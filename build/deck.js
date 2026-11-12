@@ -274,14 +274,14 @@ tax.forEach((t, i) => {
   T(s, t[0], { x: x + 0.25, y: 2.0, w: 3.5, h: 0.55, fontSize: 24, bold: true, color: FOREST });
   T(s, t[1], { x: x + 0.25, y: 2.6, w: 3.5, h: 2.7, fontSize: 11, color: N70 });
 });
-T(s, [{ text: "Bridge from OZ 1.0 to OZ 2.0. ", options: { bold: true, color: NAVY } }, { text: "Exiting an OZ 1.0 investment any time before the December 31, 2026 recognition date triggers a new 180-day reinvestment period. Nothing in the OZ 1.0 or OZ 2.0 statutes, regulations or IRS guidance as it exists today prohibits overlapping that exit with the start of the OZ 2.0 program on or after January 1, 2027. Review with a qualified tax professional." }], { x: 0.7, y: 5.45, w: 11.9, h: 0.85, fontSize: 10.5, color: N70 });
+T(s, [{ text: "Bridge from OZ 1.0 to OZ 2.0. ", options: { bold: true, color: NAVY } }, { text: "Exiting an OZ 1.0 investment any time before the December 31, 2026 recognition date triggers a new 180-day reinvestment period. Nothing in the OZ 1.0 or OZ 2.0 statutes, regulations or IRS guidance as it exists today prohibits overlapping that exit with the start of the OZ 2.0 program on or after January 1, 2027." }, { text: "2", options: { superscript: true } }, { text: " Review with a qualified tax professional. See note 2 on the final page." }], { x: 0.7, y: 5.45, w: 11.9, h: 0.85, fontSize: 10.5, color: N70 });
 src(s, "Nothing here is tax advice. Benefits depend on each investor’s circumstances and on current law, which may change. Consult your own tax adviser.");
 
 // ================= 13 How to invest =================
 pres.addSection({ title: "Investing" });
 s = pres.addSlide({ masterName: "NAVY", sectionTitle: "Investing" });
 label(s, "Two ways in"); title(s, "How to invest");
-const steps = [["01", "Realize a gain", "Sell stock, a business, real estate, crypto or another appreciated asset. Only the gain needs to be reinvested."], ["02", "Buy OZ within 180 days", "Purchase Class A units through any brokerage account at the prevailing market price. No minimum, no accreditation, no subscription documents."], ["03", "Elect and hold", "Make the deferral election on IRS Form 8949 and report the investment on Form 8997 with your tax return, then hold for the ten-year benefit."]];
+const steps = [["01", "Realize a gain", "Sell stock, a business, real estate, crypto or another appreciated asset. Only the gain needs to be reinvested."], ["02", "Buy OZ within 180 days", [{ text: "Purchase Class A units through any brokerage account at the prevailing market price." }, { text: "1", options: { superscript: true } }, { text: " No minimum, no accreditation, no subscription documents." }]], ["03", "Elect and hold", "Make the deferral election on IRS Form 8949 and report the investment on Form 8997 with your tax return, then hold for the ten-year benefit."]];
 steps.forEach((st, i) => {
   const x = 0.7 + i * 4.05;
   s.addShape(pres.ShapeType.rect, { x, y: 2.0, w: 0.04, h: 2.2, fill: { color: LGREEN }, line: { color: LGREEN } });
@@ -294,6 +294,7 @@ T(s, "Investor Relations", { x: 0.7, y: 5.0, w: 6, h: 0.4, fontSize: 15, bold: t
 T(s, [{ text: "203-883-1944  ·  IR@belpointeoz.com", options: { breakLine: true } }, { text: "255 Glenville Road, Greenwich, CT 06831", options: { breakLine: true } }, { text: "belpointeoz.com  ·  SEC filings at www.sec.gov" }], { x: 0.7, y: 5.45, w: 7, h: 1.0, fontSize: 12, color: "C9D1D8" });
 T(s, "NYSE American: OZ", { x: 8.3, y: 5.0, w: 4.3, h: 0.5, fontSize: 22, bold: true, color: LGREEN, align: "right" });
 T(s, "Class A units trade at prevailing market prices and may be above or below NAV. Brokerage commissions and expenses will reduce returns.", { x: 8.3, y: 5.55, w: 4.3, h: 0.8, fontSize: 9.5, color: "8C98A4", align: "right" });
+T(s, [{ text: "1", options: { superscript: true } }, { text: " Based on current law, Treasury regulations and IRS guidance, and on Belpointe OZ’s structure as a Qualified Opportunity Fund, Class A units acquired with eligible capital gains within the 180-day period, whether purchased on NYSE American or directly from the Company, should be a qualifying investment. Opportunity Zone tax benefits depend on each investor’s circumstances. Consult your tax adviser.", options: { breakLine: true } }, { text: "2", options: { superscript: true } }, { text: " Based on current law, Treasury regulations and IRS guidance, each of which is subject to change. Whether gain recognized on exiting an existing Qualified Opportunity Fund investment is eligible for reinvestment, and when the 180-day period begins and ends, depend on each investor’s circumstances. This is general information, not tax advice. Consult your tax adviser." }], { x: 0.7, y: 6.24, w: 11.9, h: 0.6, fontSize: 7.5, color: "8C98A4", valign: "top" });
 
 (async () => {
   const out = path.join(__dirname, "Belpointe OZ Investor Presentation.pptx");
